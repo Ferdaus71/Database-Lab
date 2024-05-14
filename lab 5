@@ -1,0 +1,51 @@
+CREATE TABLE branch (
+    branch_name varchar(20),
+    branch_city varchar (20),
+    assets int (5)
+    );
+   
+   
+   
+    CREATE TABLE customer_ (
+    customer_ID int PRIMARY KEY,
+    customer_name varchar(20),
+    customer_city int (5)
+    );
+   
+   
+    CREATE TABLE account (
+    acount_number int PRIMARY KEY,
+    branch_name varchar(20),
+    blance int (10)
+    );
+   
+    CREATE TABLE loan (
+    loan_number int PRIMARY KEY,
+    branch_name varchar(20),
+    ammount int (10)
+    );
+   
+    CREATE TABLE depositor (
+    customer_name varchar(20),
+    acount_number int (10)PRIMARY KEY,
+    FOREIGN KEY (acount_number) REFERENCES account (acount_number)
+    );
+   
+   
+    CREATE TABLE brrower (
+    customer_name varchar(20),
+    acount_number int (10)PRIMARY KEY,
+    FOREIGN KEY (acount_number) REFERENCES account (acount_number)
+    );
+
+INSERT INTO `account` (`acount_number`, `branch_name`, `blance`) VALUES ('1', 'dhaka', '10000'), ('2', 'rangpur', '20000'), ('3', 'kurigram', '30000');
+
+INSERT INTO `branch` (`branch_name`, `branch_city`, `assets`) VALUES ('dhaka', 'mirpur', '1'), ('rangpur', 'lake', '2'), ('kurigram', 'chinai', '3');
+
+INSERT INTO `brrower` (`customer_name`, `acount_number`) VALUES ('aladin', '1'), ('himel', '2'), ('bigghani', '3');
+
+INSERT INTO `customer_` (`customer_ID`, `customer_name`, `customer_city`) VALUES ('1', 'aladin', '1'), ('2', 'himel', '2'), ('3', 'bigghani', '3');
+
+INSERT INTO `depositor` (`customer_name`, `acount_number`) VALUES ('aladin', '3'), ('himel', '1'), ('bigghani', '2');
+
+INSERT INTO `loan` (`loan_number`, `branch_name`, `ammount`) VALUES ('1', 'dhaka', '5000'), ('2', 'rangpur', '200'), ('3', 'kurigram', '3000');
